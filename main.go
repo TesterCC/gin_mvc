@@ -9,6 +9,7 @@ import (
 
 
 func main() {
+	// IDE可以从这debug启动项目
 	// 获取初始化后的db并延迟关闭
 	db := common.InitDB()
 	defer db.Close()
