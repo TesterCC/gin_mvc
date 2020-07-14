@@ -27,7 +27,7 @@ go get -u github.com/go-sql-driver/mysql
 jwt-go:
 go get -u github.com/dgrijalva/jwt-go
 
-cofig组件:
+config组件:
 go get -u github.com/spf13/viper
 
 go版本较低可能需要手动安装crypto：
