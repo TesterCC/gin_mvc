@@ -98,13 +98,15 @@ func Login(ctx *gin.Context) {
 	DB.Where("telephone = ?", telephone).First(&user)
 	if user.ID == 0 {
 		response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "用户不存在")
-		// ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "用户不存在"})
+		//ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "用户不存在"})
+		return
 	}
 
 	// 判断密码是否正确   用户密码不能明文保存，所以在注册时应该将用户密码加密，使用密文存储
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
 		response.Fail(ctx, nil, "密码错误")
 		//ctx.JSON(http.StatusBadRequest, gin.H{"code": 400, "msg": "密码错误"})
+		return
 	}
 
 	// 发放token
@@ -118,7 +120,7 @@ func Login(ctx *gin.Context) {
 	// 返回结果
 	response.Success(ctx, gin.H{"token":token},"登录成功")
 	//ctx.JSON(http.StatusOK, gin.H{"code": 200, "msg": "登录成功", "data": gin.H{"token": token}})
-
+	return
 }
 
 func isTelephoneExist(db *gorm.DB, telephone string) bool {
