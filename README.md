@@ -12,6 +12,8 @@
 
 [参考视频](https://www.bilibili.com/video/BV1CE411H7bQ)
 
+[目前进度](https://www.bilibili.com/video/BV1CE411H7bQ?p=3)
+
 ## 安装包
 
 ```markdown
@@ -72,13 +74,50 @@ echo -n "eyJVc2VySWQiOjYsImV4cCI6MTU5NDgxOTY1MCwiaWF0IjoxNTk0MjE0ODUwLCJpc3MiOiJ
 
 ## Testing
 
+接口测试使用postman即可
+
 1.Postman测试参数注意
 - POST方法
 - Body传参
 - Body参数格式form-data
 
-## Docs
+服务端口默认设置为：1016，即 http://127.0.0.1:1016/api/xx/yy
 
+测试注册用户接口范例：
+![](https://cdn.jsdelivr.net/gh/TesterCC/pic_bed3/20220406225302.png)
+
+
+## DB初始化
+
+数据库驱动使用gorm
+
+Docs: https://gorm.io/docs/
+
+Install: `go get -u gorm.io/gorm`
+
+### 创建数据库
+
+1.图形化创建
+
+New Database, 信息如下：
+
+![](https://cdn.jsdelivr.net/gh/TesterCC/pic_bed3/20220406223812.png)
+
+2.命令行创建
+
+```mysql
+CREATE DATABASE
+IF
+	NOT EXISTS ginessential DEFAULT CHARACTER 
+	SET utf8 DEFAULT COLLATE utf8_general_ci;
+```
+实际生产环境：utf8mb4和utf8mb4_general_ci 用的更多。
+
+PS：基本上mysql库和表创建成功就可以启动server服务器了。
+
+## Docs
 - [gin](https://gin-gonic.com/docs/)
 - [gorm](https://gorm.io/docs/)
 - [jwt-go](https://github.com/dgrijalva/jwt-go)
+- [Installing multiple Go versions](https://go.dev/doc/manage-install#installing-multiple)
+

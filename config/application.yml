@@ -6,5 +6,5 @@ datasource:
   port: 3306
   database: ginessential
   username: root
-  password: yanxi76543210
+  password: PenTest123
   charset: utf8
